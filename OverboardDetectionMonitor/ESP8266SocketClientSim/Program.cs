@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DetectionConsole
+namespace ESP8266SocketClientSim
 {
     class Program
     {

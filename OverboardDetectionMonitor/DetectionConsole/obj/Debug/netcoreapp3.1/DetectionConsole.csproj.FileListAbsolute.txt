@@ -1,0 +1,13 @@
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\bin\Debug\netcoreapp3.1\DetectionConsole.exe
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\bin\Debug\netcoreapp3.1\DetectionConsole.deps.json
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\bin\Debug\netcoreapp3.1\DetectionConsole.runtimeconfig.json
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\bin\Debug\netcoreapp3.1\DetectionConsole.runtimeconfig.dev.json
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\bin\Debug\netcoreapp3.1\DetectionConsole.dll
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\bin\Debug\netcoreapp3.1\DetectionConsole.pdb
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.csprojAssemblyReference.cache
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.AssemblyInfoInputs.cache
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.AssemblyInfo.cs
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.csproj.CoreCompileInputs.cache
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.dll
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.pdb
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.genruntimeconfig.cache
