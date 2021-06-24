@@ -6,7 +6,7 @@ namespace ESP8266SocketClientSim
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }

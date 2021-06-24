@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using MOBAL.Networking;
+using System.Threading.Tasks;
 
-namespace DetectionConsole
+namespace DeviceMonitorGUI
 {
-
     public class Device
     {
         private DeviceState state { get; set; }//An enumerator holding the state of the devices connection to a socket
@@ -13,22 +13,18 @@ namespace DetectionConsole
         private string deviceID { get; set; }//Holds a unique device ID
         private string deviceIP { get; set; }//Holds the local IP address of the device
 
-        private DeviceSyncSocketServer server;
-
         public Device(DeviceState state, Int16 portNumber, string deviceID, string deviceIP)
         {
             this.state = state;
             this.portNumber = portNumber;
             this.deviceID = deviceID;
             this.deviceIP = deviceIP;
-            //Construct Socket server
-
-
-
         }
 
+        public void StartDevice()
+        {
 
-
+        }
 
 
     }
