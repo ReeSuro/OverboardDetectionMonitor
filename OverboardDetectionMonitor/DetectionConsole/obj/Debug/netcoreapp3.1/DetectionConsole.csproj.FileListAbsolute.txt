@@ -1,4 +1,0 @@
-E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.csprojAssemblyReference.cache
-E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.AssemblyInfoInputs.cache
-E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.AssemblyInfo.cs
-E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\OverboardDetectionMonitor\DetectionConsole\obj\Debug\netcoreapp3.1\DetectionConsole.csproj.CoreCompileInputs.cache

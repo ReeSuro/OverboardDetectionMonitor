@@ -1,0 +1,10 @@
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\bin\Debug\DeviceMonitorGUI.exe.config
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\bin\Debug\DeviceMonitorGUI.exe
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\bin\Debug\DeviceMonitorGUI.pdb
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\obj\Debug\DeviceMonitorGUI.csprojAssemblyReference.cache
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\obj\Debug\DeviceMonitorGUI.MainForm.resources
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\obj\Debug\DeviceMonitorGUI.Properties.Resources.resources
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\obj\Debug\DeviceMonitorGUI.csproj.GenerateResource.cache
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\obj\Debug\DeviceMonitorGUI.csproj.CoreCompileInputs.cache
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\obj\Debug\DeviceMonitorGUI.exe
+E:\2021\UNI\Industry Project\ProjectRepo\OverboardDetectionMonitor\DeviceMonitorGUI\obj\Debug\DeviceMonitorGUI.pdb
