@@ -11,6 +11,9 @@ namespace DeviceMonitorGUI
     {
         List<DeviceSyncSocketServer> offlineDevices;
         List<DeviceSyncSocketServer> onlineDevices;
+        List<DeviceSyncSocketServer> emergencyDevices;
+        List<Task> taskList;
+
         DeviceSyncSocketServer device1 = null;
         Task t = null;
         Timer timer;
@@ -33,16 +36,26 @@ namespace DeviceMonitorGUI
            
             /////////Server Init///////////////
             //1. Load each port by looping through each device.
-            device1 = new DeviceSyncSocketServer(AllDeviceInfo[0].deviceIP, short.Parse(AllDeviceInfo[0].devicePort), AllDeviceInfo[0]);
             t = new Task(device1.StartListening);
 
             offlineDevices = new List<DeviceSyncSocketServer>();
             onlineDevices = new List<DeviceSyncSocketServer>();
+            emergencyDevices = new List<DeviceSyncSocketServer>();
+            taskList = new List<Task>();
 
-            offlineDevices.Add(device1);
+            foreach (DeviceInfo info in AllDeviceInfo)
+            {
+                DeviceSyncSocketServer newDevice = new DeviceSyncSocketServer(AllDeviceInfo[0].deviceIP, short.Parse(AllDeviceInfo[0].devicePort), AllDeviceInfo[0]);
+                offlineDevices.Add(newDevice);
+                taskList.Add(new Task(newDevice.StartListening));
+            }
 
             addLog("->Starting Listeners...");
-            t.Start();
+
+            foreach (Task t in taskList) 
+            {
+                t.Start();
+            }
 
 
             ////Setup timer/////
@@ -68,7 +81,30 @@ namespace DeviceMonitorGUI
                     addLog("Device: " + onlineDevices[i].deviceInfo.deviceName + " Offline");
                     onlineDevices[i].deviceState = DeviceState.OFFLINE;
                     offlineDevices.Add(onlineDevices[i]);
+                    onlineDevices.RemoveAt(i);         
+                }
+                else if (DateTime.Now.Subtract(onlineDevices[i].lastPingTime).Seconds > 10) //Check the times and create warning when above 10 seconds 
+                {
+                    //Add device to the emergency list
+                    var overboardDevice = onlineDevices[i];
+
+                    addLog("Device: " + overboardDevice.deviceInfo.deviceID + " Registered to " + overboardDevice.deviceInfo.deviceName + " is not responding");
+                    overboardDevice.deviceState = DeviceState.NOTRESPONDING;
+                    emergencyDevices.Insert(i, overboardDevice);
                     onlineDevices.RemoveAt(i);
+
+                    //Show message
+                    var overboardMessage = MessageBox.Show("Device:  " + overboardDevice.deviceInfo.deviceID + " Registered to " + overboardDevice.deviceInfo.deviceName + " is overboard!",
+                                                           "OVERBOARD ALERT!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                   
+                    //Wait for OK pushed then add device to offline list
+                    if (overboardMessage == DialogResult.OK) 
+                    {
+                        Console.WriteLine("Moving device to offline");
+                        overboardDevice.deviceState = DeviceState.OFFLINE;
+                        offlineDevices.Add(overboardDevice);
+                        emergencyDevices.RemoveAt(i);
+                    }
                 }
             }
             //Loop through the offline listeners
@@ -84,10 +120,15 @@ namespace DeviceMonitorGUI
             }
             //Update the table 
             DeviceGridBox.Rows.Clear();
+            foreach (DeviceSyncSocketServer dev in emergencyDevices)
+            {
+                DeviceGridBox.Rows.Add(dev.deviceInfo.deviceID, dev.deviceIP.ToString(), dev.portNumber, dev.deviceInfo.deviceName, "EMERGENCY", dev.deviceInfo.deviceBattery, DateTime.Now.Subtract(dev.lastPingTime));
+            }
             foreach (DeviceSyncSocketServer dev in onlineDevices) 
             {
-                DeviceGridBox.Rows.Add(dev.deviceInfo.deviceID, dev.deviceIP.ToString(), dev.portNumber, dev.deviceInfo.deviceName, dev.deviceState.ToString(), dev.deviceInfo.deviceBattery);
+                DeviceGridBox.Rows.Add(dev.deviceInfo.deviceID, dev.deviceIP.ToString(), dev.portNumber, dev.deviceInfo.deviceName, dev.deviceState.ToString(), dev.deviceInfo.deviceBattery, DateTime.Now.Subtract(dev.lastPingTime));
             }
+
         }
 
         public void addLog(string message) {
@@ -101,7 +142,7 @@ namespace DeviceMonitorGUI
             //1. Create stream reader object
             try
             {
-                string filePath = System.IO.Path.GetFullPath("../../DeviceInfo.csv");
+                string filePath = Path.GetFullPath("../../DeviceInfo.csv");
                 StreamReader reader = new StreamReader(filePath);
                 string line;
                 string[] info = new string[4];
