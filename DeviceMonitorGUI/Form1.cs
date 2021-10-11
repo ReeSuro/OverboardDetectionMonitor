@@ -13,9 +13,6 @@ namespace DeviceMonitorGUI
         List<DeviceSyncSocketServer> onlineDevices;
         List<DeviceSyncSocketServer> emergencyDevices;
         List<Task> taskList;
-
-        DeviceSyncSocketServer device1 = null;
-        Task t = null;
         Timer timer;
         public MainForm()
         {
@@ -36,8 +33,6 @@ namespace DeviceMonitorGUI
            
             /////////Server Init///////////////
             //1. Load each port by looping through each device.
-            t = new Task(device1.StartListening);
-
             offlineDevices = new List<DeviceSyncSocketServer>();
             onlineDevices = new List<DeviceSyncSocketServer>();
             emergencyDevices = new List<DeviceSyncSocketServer>();
@@ -45,7 +40,7 @@ namespace DeviceMonitorGUI
 
             foreach (DeviceInfo info in AllDeviceInfo)
             {
-                DeviceSyncSocketServer newDevice = new DeviceSyncSocketServer(AllDeviceInfo[0].deviceIP, short.Parse(AllDeviceInfo[0].devicePort), AllDeviceInfo[0]);
+                DeviceSyncSocketServer newDevice = new DeviceSyncSocketServer(info.deviceIP, short.Parse(info.devicePort), info);
                 offlineDevices.Add(newDevice);
                 taskList.Add(new Task(newDevice.StartListening));
             }
@@ -77,6 +72,10 @@ namespace DeviceMonitorGUI
                 //Check for any offline devices and move them to the offline list
                 if (onlineDevices[i].deviceState == DeviceState.DISCONNECTING)
                 {
+                    if (onlineDevices[i].serverRunning == false) 
+                    {
+                        addLog("Listener Error - Server not running: " + onlineDevices[i].deviceInfo.deviceID);
+                    }
                     //if the device has requested a disconnect then remove from the active list and log
                     addLog("Device: " + onlineDevices[i].deviceInfo.deviceName + " Offline");
                     onlineDevices[i].deviceState = DeviceState.OFFLINE;
@@ -110,6 +109,10 @@ namespace DeviceMonitorGUI
             //Loop through the offline listeners
             for (int i = 0; i < offlineDevices.Count; i++)
             {
+                if (offlineDevices[i].serverRunning == false)
+                {
+                    addLog("Listener Error - Server not running: " + offlineDevices[i].deviceInfo.deviceID);
+                }
                 //Check for any offline devices and move them to the offline list
                 if (offlineDevices[i].deviceState == DeviceState.CONNECTED)
                 {
@@ -158,7 +161,6 @@ namespace DeviceMonitorGUI
                     currentDevice.deviceName = info[3];
                     currentDevice.deviceBattery = "N";
             
-
                     //add the device to the list
                     deviceList.Add(currentDevice);
                 }

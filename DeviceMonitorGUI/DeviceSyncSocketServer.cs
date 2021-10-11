@@ -37,7 +37,16 @@ namespace DeviceMonitorGUI
             {
                 ReceiveTimeout = 10000 //Make socket timeout 60 seconds
             };
-            listener.Bind(localEndPoint);
+            try
+            {
+                listener.Bind(localEndPoint);
+            }
+            catch (SocketException ex) 
+            {
+                Console.WriteLine(ex);
+                serverRunning = false;
+                return;
+            }
             // Bind the socket to the local endpoint and listen for incoming connections 
             while (serverRunning)
             { 
@@ -109,7 +118,7 @@ namespace DeviceMonitorGUI
                                         Console.WriteLine("Disconnect request received from " + this.deviceIP.ToString());
                                         deviceState = DeviceState.DISCONNECTING;
                                         //TODO: IMPLEMENT TIMEOUT ON DISCONNECT
-                                        while (deviceState == DeviceState.DISCONNECTING) ;
+                                        while (deviceState == DeviceState.DISCONNECTING);
                                         //Echo disconnect request back
                                         char[] d = { ' ' };
                                         if (deviceState == DeviceState.OFFLINE)
